@@ -182,3 +182,80 @@ text-align: center;
 color: white;
 
 }
+/* Footer styling */
+.footer {
+  background-color: #1f4e6d;
+  color: white;
+  padding: 20px 40px;
+}
+
+/* Layout */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.logo {
+  color: red;
+  font-size: 28px;
+  margin: 100px;
+}
+
+/* Left */
+.footer-left p {
+  margin: 5px 12;
+  font-size: 14px;
+}
+
+/* Center links */
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer-center a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-center a:hover {
+  text-decoration: underline;
+}
+
+/* Right */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.footer-right a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-right input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .cards { grid-template-columns: 1fr; }
+}
