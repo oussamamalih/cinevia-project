@@ -1,0 +1,125 @@
+:root {
+  --color-primary: #BF092F;
+  --color-dark: #132440;
+  --color-blue: #16476A;
+  --color-teal: #3B9797;
+}
+body {
+background-color: var(--color-dark);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 0;
+}
+
+/* NavBar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-blue);
+  padding: 7px 40px;
+  
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  text-align: center;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #f0f0f0;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* Search box */
+.search-box input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: var(--color-dark);
+  color: white;
+}
+.search-box input::placeholder {
+  color: #bbb;
+}
+
+/* Hero */
+
+.hero {
+position: relative;
+height: 100vh;
+background:
+    linear-gradient(to right, rgba(255, 60, 0, 0.5), rgba(0, 60, 255, 0.5)),
+    linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
+    url('images/Hero-background.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+.hero-content {
+  max-width: 850px;
+  padding: 20px;
+}
+.hero h1 {
+  font-size: 2.7rem;
+  line-height: 1.4;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: white;
+}
+/* Button */
+.hero-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #e50914;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.3s ease;
+  align-items: flex-end;
+}
+
+.btn:hover {
+  background: #b20710;
+  transform: translateY(-2px);
+}
+
+.categories {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  padding: 20px;
+  background: #142c4c; /* dark blue background */
+}
+/* categories Button */
+.cat-btn {
+  background: #214e73;
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+/* Hover effect */
+.cat-btn:hover {
+  background: #2d6a9f;
+ 
+}
+
+
