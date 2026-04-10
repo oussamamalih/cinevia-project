@@ -9,7 +9,7 @@ const movies = [
     image: "imagesMovies/banshee.jpg",
     title: "Banshee",
     category: "Action",
-    desc: "Banshee suit un ancien braqueur qui, à sa sortie de prison, usurpe l’identité d’un shérif assassiné dans la petite ville amish de Banshee, en Pennsylvanie, pour affronter son passé tout en imposant sa propre justice. Portée par Antony Starr et créée par Jonathan Tropper et David Schickler, la série séduit par ses scènes d’action spectaculaires, son intensité et ses personnages complexes. Saluée pour ses combats chorégraphiés et sa tension dramatique, elle est souvent décrite comme brutale, stylisée et addictive."
+    desc: "Banshee suit un ancien braqueur qui, à sa sortie de prison, usurpe l'identité d'un shérif assassiné dans la petite ville amish de Banshee, en Pennsylvanie, pour affronter son passé tout en imposant sa propre justice. Portée par Antony Starr et créée par Jonathan Tropper et David Schickler, la série séduit par ses scènes d'action spectaculaires, son intensité et ses personnages complexes. Saluée pour ses combats chorégraphiés et sa tension dramatique, elle est souvent décrite comme brutale, stylisée et addictive."
   },
   {
     image: "imagesMovies/got.jpg",
@@ -27,7 +27,7 @@ const movies = [
     image: "imagesMovies/dexter.jpg",
     title: "Dexter",
     category: "Drama",
-    desc: "Expert en analyse de projections de sang, doté d'un esprit brillant et d'un calme apparent, Dexter Morgan mène une double vie glaçante : le jour, il aide la police de Miami à résoudre des meurtres brutaux ; la nuit, il traque et élimine des criminels dangereux en fuite, guidé par un code moral strict inculqué par son père adoptif. Alors que sa double vie devient de plus en plus périlleuse, Dexter doit jongler entre ses relations, ses enquêtes et la menace constante d'être démasqué."
+    desc: "Expert en analyse de projections de sang, doté d'un esprit brillant et d'un calme apparent, Dexter Morgan mène une double vie glaçante : le jour, il aide la police de Miami à résoudre des meurtres brutaux ; la nuit, il traque et élimine des criminels dangereux en fuite, guidé par un code moral strict inculqué par son père adoptif. Alors que sa double vie devient de plus en plus périlleuse, Dexter doit jongler entre ses relations, ses enquêtes et la menace constante d'être démasqué."
   },
   {
     image: "imagesMovies/the witcher.jpg",
@@ -69,86 +69,72 @@ const movies = [
     image: "imagesMovies/dumb.jpg",
     title: "Dumb & Dumber",
     category: "Comedy",
-    desc: "Dumb and Dumber (1994) suit Lloyd et Harry, deux amis d’une bêtise redoutable, qui traversent les États-Unis pour rendre une mallette à une femme rencontrée par hasard, se retrouvant mêlés à un complot. Portée par Jim Carrey et Jeff Daniels, cette comédie loufoque des frères Farrelly est rythmée, absurde et riche en gags visuels. Accueillie tièdement à sa sortie mais devenue culte, elle est vivement recommandée aux amateurs d’humour déjanté."
+    desc: "Dumb and Dumber (1994) suit Lloyd et Harry, deux amis d'une bêtise redoutable, qui traversent les États-Unis pour rendre une mallette à une femme rencontrée par hasard, se retrouvant mêlés à un complot. Portée par Jim Carrey et Jeff Daniels, cette comédie loufoque des frères Farrelly est rythmée, absurde et riche en gags visuels. Accueillie tièdement à sa sortie mais devenue culte, elle est vivement recommandée aux amateurs d'humour déjanté."
   },
 ];
- 
+
 /* ── DOM references ── */
-const container      = document.getElementById("movies-container");
-const overlay        = document.getElementById("overlay");
-const modalImg       = document.getElementById("modalImg");
-const modalTitle     = document.getElementById("modalTitle");
-const modalDesc      = document.getElementById("modalDesc");
-const modalCategory  = document.getElementById("modalCategory");
-const closeBtn       = document.getElementById("closeBtn");
-const favBtn         = document.getElementById("favBtn");
-const favSection     = document.querySelector(".favorites");
-const searchInput    = document.querySelector(".search-box input");
-const catButtons     = document.querySelectorAll(".cat-btn");
- 
+const container     = document.getElementById("movies-container");
+const overlay       = document.getElementById("overlay");
+const modalImg      = document.getElementById("modalImg");
+const modalTitle    = document.getElementById("modalTitle");
+const modalDesc     = document.getElementById("modalDesc");
+const modalCategory = document.getElementById("modalCategory");
+const closeBtn      = document.getElementById("closeBtn");
+const favBtn        = document.getElementById("favBtn");
+const favSection    = document.querySelector(".favorites");
+const searchInput   = document.querySelector(".search-box input");
+const catButtons    = document.querySelectorAll(".cat-btn");
+
 /* ── State ── */
-let currentMovie  = null;
-let favorites     = [];        // stores movie titles already in favorites
-let activeFilter  = "Tous";
- 
-/* ── Open modal ── */
+let currentMovie = null;
+let favorites    = [];
+let activeFilter = "Tous";
+
+/* ── Modal ── */
 function openModal(movie) {
-  currentMovie = movie;
-  modalImg.src            = movie.image;
-  modalTitle.textContent  = movie.title;
-  modalDesc.textContent   = movie.desc;
+  currentMovie              = movie;
+  modalImg.src              = movie.image;
+  modalTitle.textContent    = movie.title;
+  modalDesc.textContent     = movie.desc;
   modalCategory.textContent = movie.category;
- 
-  // Update fav button label based on current state
   updateFavBtn();
- 
   overlay.classList.add("show");
 }
- 
-/* ── Update favourite button label ── */
-function updateFavBtn() {
-  if (!currentMovie) return;
-  const isFav = favorites.includes(currentMovie.title);
-  favBtn.textContent = isFav ? "Retirer des favoris 💔" : "Ajouter aux favoris ❤️";
-}
- 
-/* ── Close modal ── */
+
 function closeModal() {
   overlay.classList.remove("show");
   currentMovie = null;
 }
- 
+
+function updateFavBtn() {
+  favBtn.textContent = favorites.includes(currentMovie.title)
+    ? "Retirer des favoris 💔"
+    : "Ajouter aux favoris ❤️";
+}
+
 closeBtn.onclick = closeModal;
- 
-overlay.addEventListener("click", (e) => {
-  if (e.target === overlay) closeModal();
-});
- 
-/* ── Favourite toggle ── */
+overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+
+/* ── Favourites ── */
 favBtn.addEventListener("click", () => {
   if (!currentMovie) return;
- 
-  const alreadyFav = favorites.includes(currentMovie.title);
- 
-  if (alreadyFav) {
-    // Remove from favorites
+  if (favorites.includes(currentMovie.title)) {
     favorites = favorites.filter(t => t !== currentMovie.title);
-    removeFavCard(currentMovie.title);
+    favSection.querySelector(`[data-fav-title="${currentMovie.title}"]`)?.remove();
   } else {
-    // Add to favorites
     favorites.push(currentMovie.title);
-    addFavCard(currentMovie);
+    const card = createCard(currentMovie);
+    card.dataset.favTitle = currentMovie.title;
+    favSection.appendChild(card);
   }
- 
   updateFavBtn();
 });
- 
-/* ── Add a favourite card ── */
-function addFavCard(movie) {
+
+/* ── Card factory ── */
+function createCard(movie) {
   const card = document.createElement("div");
   card.classList.add("card");
-  card.dataset.favTitle = movie.title;
- 
   card.innerHTML = `
     <img src="${movie.image}" alt="${movie.title}">
     <div class="card-content">
@@ -157,88 +143,45 @@ function addFavCard(movie) {
       <button class="details-btn">Voir détails</button>
     </div>
   `;
- 
   card.querySelector(".details-btn").addEventListener("click", () => openModal(movie));
-  favSection.appendChild(card);
+  return card;
 }
- 
-/* ── Remove a favourite card ── */
-function removeFavCard(title) {
-  const card = favSection.querySelector(`[data-fav-title="${title}"]`);
-  if (card) card.remove();
-}
- 
-/* ── Build movie cards ── */
+
+/* ── Render ── */
 function renderCards(list) {
-  container.innerHTML = "";
- 
-  if (list.length === 0) {
-    container.innerHTML = `<p style="color:#aaa; text-align:center; grid-column:1/-1; padding:40px;">Aucun film trouvé.</p>`;
-    return;
-  }
- 
-  list.forEach(movie => {
-    const card = document.createElement("div");
-    card.classList.add("card");
- 
-    card.innerHTML = `
-      <img src="${movie.image}" alt="${movie.title}">
-      <div class="card-content">
-        <h3>${movie.title}</h3>
-        <p>${movie.category}</p>
-        <button class="details-btn">Voir détails</button>
-      </div>
-    `;
- 
-    card.querySelector(".details-btn").addEventListener("click", () => openModal(movie));
-    container.appendChild(card);
-  });
+  container.innerHTML = list.length
+    ? ""
+    : `<p style="color:#aaa;text-align:center;grid-column:1/-1;padding:40px;">Aucun film trouvé.</p>`;
+  list.forEach(movie => container.appendChild(createCard(movie)));
 }
- 
-/* ── Filter logic (category + search combined) ── */
+
+/* ── Filters ── */
+const labelMap = { "Tous": "Tous", "Action": "Action", "Comédie": "Comedy", "Drame": "Drama" };
+
 function applyFilters() {
   const query = searchInput.value.trim().toLowerCase();
- 
   const filtered = movies.filter(movie => {
-    const matchCategory =
-      activeFilter === "Tous" ||
+    const matchCategory = activeFilter === "Tous" ||
       movie.category.toLowerCase() === activeFilter.toLowerCase();
- 
-    const matchSearch =
-      query === "" ||
+    const matchSearch = !query ||
       movie.title.toLowerCase().includes(query) ||
       movie.category.toLowerCase().includes(query);
- 
     return matchCategory && matchSearch;
   });
- 
   renderCards(filtered);
 }
- 
-/* ── Category buttons ── */
+
 catButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    // Remove active class from all
     catButtons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
- 
-    // Map French button labels to data categories
-    const labelMap = {
-      "Tous":    "Tous",
-      "Action":  "Action",
-      "Comédie": "Comedy",
-      "Drame":   "Drama",
-    };
- 
     activeFilter = labelMap[btn.textContent.trim()] || btn.textContent.trim();
     applyFilters();
   });
 });
- 
-/* ── Search input ── */
+
 searchInput.addEventListener("input", applyFilters);
- 
-/* ── Initial render ── */
-// Set "Tous" button as active by default
+
+/* ── Init ── */
 catButtons[0].classList.add("active");
 renderCards(movies);

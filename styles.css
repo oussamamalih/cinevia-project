@@ -102,7 +102,7 @@ background:
 }
 
 .hero-btn:hover {
-  background: #b20710;
+  background: var(--color-primary);
   transform: translateY(-2px);
 }
 
@@ -184,7 +184,7 @@ background:
 /* BUTTON */
 .card button,
 .details-btn {
-  background: #e11d48;
+  background: var(--color-primary);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -195,7 +195,7 @@ background:
 
 .card button:hover,
 .details-btn:hover {
-  background: #be123c;
+  background: var(--color-primary);
 }
 
 /* FAVORITES */
@@ -213,7 +213,7 @@ background:
 
 /* Footer */
 .footer {
-  background-color: #1f4e6d;
+  background-color: var(--color-blue);
   color: white;
   padding: 20px 40px;
 }
@@ -315,7 +315,7 @@ background:
 /* Category tag */
 .tag {
   display: inline-block;
-  background: crimson;
+  background: var(--color-primary);
   padding: 4px 10px;
   border-radius: 8px;
   font-size: 12px;
@@ -325,7 +325,7 @@ background:
 #favBtn {
   padding: 10px 16px;
   border: none;
-  background: crimson;
+  background: var(--color-primary);
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -335,7 +335,7 @@ background:
 }
 
 #favBtn:hover {
-  background: #a00020;
+  background: var(--color-primary);
 }
 
 /* Close button */
