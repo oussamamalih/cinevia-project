@@ -13,7 +13,7 @@
         </a>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Accueil</a></li>
+            <li><a href="#hero">Accueil</a></li>
             <li><a href="#">Films</a></li>
             <li><a href="#">Favoris</a></li>
         </ul>
@@ -35,17 +35,36 @@
   <button class="cat-btn">Comédie</button>
   <button class="cat-btn">Drame</button>
 </div>
+
 <div id="movies-container"></div>
   
 
 <h2 class="fav-h3">Mes Favoris 🔖</h2>
-<section class="favorites">
-  
-
-  </section>
+<section class="favorites"></section>
 
 
+<div id="overlay" class="overlay">
+  <div class="modal">
+    <span id="closeBtn">&times;</span>
 
+    <div class="modal-body">
+      <!-- LEFT -->
+      <div class="modal-left">
+        <img id="modalImg" />
+      </div>
+
+      <!-- RIGHT -->
+      <div class="modal-right">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+
+        <span id="modalCategory" class="tag"></span>
+
+        <button id="favBtn">Ajouter aux favoris ❤️</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
